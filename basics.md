@@ -97,4 +97,26 @@ extraerArr(nameArr);
 
 # Promesas
 
-Ejecutar un código no bloqueantex
+Ejecutar un código no bloqueante
+
+```js
+const retirarDinero = ( montoRetirar: number ): Promise<number> => {
+  let dineroActual = 1000;
+
+  // Me va a retornar un resolve(dineroActual) o un reject('No hay suficientes montos');
+  return new Promise((resolve, reject) =>{
+    if( montoRetirar > dineroActual){
+      reject('No hay suficientes montos');
+    }else{
+      dineroActual -= montoRetirar;
+      resolve(dineroActual)
+    }
+  });
+
+}
+
+retirarDinero(500)
+  .then(montoActual => console.log(`Me queda ${montoActual}`))
+  .catch(console.warn(err))
+
+```
